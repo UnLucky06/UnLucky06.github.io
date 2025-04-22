@@ -1,0 +1,536 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>unas rosas para ti </title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #080f1a;
+      height: 100vh;
+      overflow: hidden;
+      
+      
+    }
+
+
+   
+        
+    
+    
+
+    .rose {
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+
+    .rose-wrapper {
+      width: 150px;
+      height: 200px;
+      position: relative;
+    }
+
+    .container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0.3);
+    }
+
+    .petals>div {
+      position: absolute;
+      background: #d52d58;
+      width: 85px;
+      height: 120px;
+      top: 200px;
+      transition: all 0.5s ease-out;
+    }
+
+    .petals>div:nth-child(1) {
+      border-radius: 15px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, 1);
+      left: 268px;
+      top: 200px;
+      background: #d52d58;
+    }
+
+    .petals>div:nth-child(2),
+    .petals>div:nth-child(4),
+    .petals>div:nth-child(6) {
+      background: #b81b43;
+      left: 230px;
+      border-radius: 0px 50px 0px 50px;
+      transform-origin: bottom right;
+    }
+
+    .petals>div:nth-child(3),
+    .petals>div:nth-child(5),
+    .petals>div:nth-child(7) {
+      background: #b81b43;
+      left: 300px;
+      border-radius: 50px 0px 50px 0px;
+      transform-origin: bottom left;
+    }
+
+    .petals>div:nth-child(2) {
+      z-index: 5;
+      background: #ab1a3f;
+      top: 218px;
+      height: 130px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+      animation: bloom2 3s ease-in-out infinite, glowing 2.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    .petals>div:nth-child(3) {
+      z-index: 4;
+      background: #ab1a3f;
+      top: 218px;
+      height: 130px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+      animation: bloom3 3s ease-in-out infinite, glowing 2.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    .petals>div:nth-child(4) {
+      z-index: 3;
+      background: #b81b43;
+      top: 213px;
+      height: 135px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+      animation: bloom4 3s ease-in-out infinite, glowing 2.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    .petals>div:nth-child(5) {
+      z-index: 2;
+      background: #b81b43;
+      top: 213px;
+      height: 135px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, .5);
+      animation: bloom5 3s ease-in-out infinite, glowing 2.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    .petals>div:nth-child(6) {
+      z-index: 1;
+      background: #c9204b;
+      top: 200px;
+      height: 130px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, .3);
+      animation: bloom6 3s ease-in-out infinite, glowing 2.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    .petals>div:nth-child(7) {
+      z-index: 0;
+      background: #c9204b;
+      top: 200px;
+      height: 130px;
+      box-shadow: 0px 0px 60px rgba(245, 148, 184, .3);
+      animation: bloom7 3s ease-in-out infinite, glowing 2.5s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    .deadPetals>div {
+      position: absolute;
+      background: #d52d58;
+      width: 20px;
+      height: 15px;
+      top: 200px;
+      border-radius: 0px 30px 0px 30px;
+      box-shadow: 0px 0px 30px rgba(245, 148, 184, .5);
+      transition: all 0.5s ease-out;
+    }
+
+    .leaves>div:nth-child(1) {
+      position: absolute;
+      width: 15px;
+      height: 150px;
+      background: #054c05;
+      top: 308px;
+      left: 300px;
+      border-radius: 0 0 100px 100px;
+    }
+
+    .leaves>div:nth-child(2) {
+      position: absolute;
+      width: 60px;
+      height: 100px;
+      top: 412px;
+      left: 254px;
+      border-radius: 10px 80px 40px 80px;
+      background: #054c05;
+      transform-origin: bottom;
+      transform: rotate(-30deg);
+      box-shadow: inset 10px 10px #066406;
+    }
+
+    .leaves>div:nth-child(3) {
+      position: absolute;
+      width: 60px;
+      height: 100px;
+      top: 360px;
+      left: 300px;
+      border-radius: 80px 1px 80px 40px;
+      background: #054c05;
+      transform-origin: bottom;
+      transform: rotate(30deg);
+      box-shadow: inset -10px 10px #066406;
+    }
+
+    .thorns {
+      display: none;
+    }
+
+    .texto {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 28px;
+      z-index: 9999;
+      text-align: center;
+      width: 100%;
+    }
+    .Nombre {
+        
+        position: absolute;
+  top: 240px; /* Ajusta este valor según la posición exacta de heart1 */
+  left: 52%;
+  transform: translateX(-50%);
+  color: rgb(234, 249, 18);
+  font-size: 28px;
+  z-index: 9999;
+  text-align: center;
+  width: 100%;
+  animation: estrella 2s infinite ease-in-out;
+      }
+      @keyframes estrella {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px white, 0 0 20px #fff, 0 0 30px #ff69b4;
+  }
+  50% {
+    opacity: 0.4;
+    text-shadow: 0 0 5px #fff;
+  }
+}
+
+    @keyframes bloom2 {
+      50% {
+        transform: rotate(-90deg);
+        top: 400px;
+        left: 150px;
+      }
+
+      100% {
+        transform: rotate(-60deg);
+        top: 615px;
+        left: 100px;
+        background: #71122a;
+        box-shadow: 0px 0px 0px rgba(245, 148, 184, 0);
+      }
+    }
+
+    @keyframes bloom3 {
+      100% {
+        transform: rotate(50deg);
+      }
+    }
+
+    @keyframes bloom4 {
+      100% {
+        transform: rotate(-25deg);
+      }
+    }
+
+    @keyframes bloom5 {
+      100% {
+        transform: rotate(25deg);
+      }
+    }
+
+    @keyframes bloom6 {
+      100% {
+        transform: rotate(-10deg);
+      }
+    }
+
+    @keyframes bloom7 {
+      100% {
+        transform: rotate(10deg);
+      }
+    }
+
+    @keyframes glowing {
+      50% {
+        background: #d7365f;
+        box-shadow: 0px 0px 60px rgba(245, 148, 184, 1);
+      }
+    }
+    .heart1{
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        transform: rotate(-45deg);
+        box-shadow: -10px 10px 90px #ff4757 ;
+        top: 100px; /* Ajusta la posición vertical */
+    left: 50%; /* Centra horizontalmente */
+        animation: animate .6s linear infinite; 
+    }
+    @keyframes animate {
+0%{
+    transform: rotate(-45deg) scale(1.07);
+}
+80%{
+    transform: rotate(-45deg) scale(1.0);
+}
+100%{
+    transform: rotate(-45deg) scale(0.8);
+}
+    } 
+    .heart1::before{
+        content: '';
+        position: absolute;
+        top: -50%;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        border-radius: 50%;
+        box-shadow: -10px 10px 90px #ff4757 ;
+    }
+    .heart1::after{
+        content: '';
+        position: absolute;
+        right: -50%;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        border-radius: 50%;
+        box-shadow: 10px 10px 90px #ff4757 ;
+    }
+    .heart2{
+        position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #ff4757;
+    transform: rotate(60deg); /* Ángulo cambiado */
+    box-shadow: -10px 10px 90px #ff4757;
+    top: 250px;
+    left: 100%;
+     /* Lado izquierdo */
+    animation: animate2 .6s linear infinite; 
+    }
+    @keyframes animate2 {
+        0%   { transform: rotate(60deg) scale(1.07); }
+    80%  { transform: rotate(60deg) scale(1.0); }
+    100% { transform: rotate(60deg) scale(0.8); }
+}
+     
+    .heart2::before{
+        content: '';
+        position: absolute;
+        top: -50%;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        border-radius: 50%;
+        box-shadow: -10px 10px 90px #ff4757 ;
+    }
+    .heart2::after{
+        content: '';
+        position: absolute;
+        right: -50%;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        border-radius: 50%;
+        box-shadow: 10px 10px 90px #ff4757 ;
+    }
+    .heart3{
+        position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #ff4757;
+    transform: rotate(-60deg); /* Ángulo opuesto */
+    box-shadow: -10px 10px 90px #ff4757;
+    top: -60px;
+    right: 350%; /* Lado derecho */
+    animation: animate3 .6s linear infinite;
+    }
+    @keyframes animate3 {
+        0%   { transform: rotate(-60deg) scale(1.07); }
+    80%  { transform: rotate(-60deg) scale(1.0); }
+    100% { transform: rotate(-60deg) scale(0.8); }
+}
+    
+    .heart3::before{
+        content: '';
+        position: absolute;
+        top: -50%;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        border-radius: 50%;
+        box-shadow: -10px 10px 90px #ff4757 ;
+    }
+    .heart3::after{
+        content: '';
+        position: absolute;
+        right: -50%;
+        width: 70px;
+        height: 70px;
+        background: #ff4757;
+        border-radius: 50%;
+        box-shadow: 10px 10px 90px #ff4757 ;
+    }
+    .gif-regalo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: auto;
+  z-index: 9999;
+  animation: saltito 2s infinite ease-in-out;
+}
+
+@keyframes saltito {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.video-fondo {
+  position: absolute;
+  left: -9999px; /* oculto pero suena */
+  width: 0;
+  height: 0;
+}
+
+.letra {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  z-index: 9999;
+  font-family: cursive;
+  animation: letraParpadea 3s infinite ease-in-out;
+}
+
+@keyframes letraParpadea {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.letra-cancion {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
+  z-index: 10000;
+  font-family: 'Arial', sans-serif;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0); /* Fondo translúcido */
+  border-radius: 10px;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="texto">Es muy tarde y muy poco pero te doy tus 20 rosas (me falto el libro)❤️</div>
+  <div class="Nombre">Alexa</div> 
+  <script>
+    const positions = [
+      [0, -47.5], [54.77, -67.6], [370.75, -104.64], [938.76, -115.19], [1457.57, -81.46],
+      [1583.66, -21.71], [1228.81, 38.95], [637.18, 92.34], [172.5, 138.51], [7.13, 168.32],
+      [-7.13, 168.32], [-172.5, 138.51], [-637.18, 92.34], [-1228.81, 38.95], [-1583.66, -21.71],
+      [-1457.57, -81.46], [-938.76, -115.19], [-370.75, -104.64], [-54.77, -67.6], [0, -47.5]
+    ];
+
+    const scale = 0.25;
+    const offsetX = window.innerWidth / 2;
+    const offsetY = window.innerHeight / 2;
+
+    positions.forEach(pos => {
+      const div = document.createElement("div");
+      div.className = "rose";
+      div.style.left = `${offsetX + pos[0] * scale}px`;
+      div.style.top = `${offsetY + pos[1] * scale}px`;
+      div.innerHTML = `
+        <div class="rose-wrapper">
+          <div class="container">
+            <div class="thorns"><div></div><div></div><div></div><div></div></div>
+            <div class="leaves"><div></div><div></div><div></div><div></div></div>
+            <div class="petals"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="deadPetals"><div></div><div></div><div></div><div></div></div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(div);
+      function renderRoses() {
+  document.querySelectorAll('.rose').forEach(el => el.remove()); // borra rosas anteriores
+
+  const offsetX = window.innerWidth / 2;
+  const offsetY = window.innerHeight / 2;
+
+  positions.forEach(pos => {
+    const div = document.createElement("div");
+    div.className = "rose";
+    div.style.left = `${offsetX + pos[0] * scale}px`;
+    div.style.top = `${offsetY + pos[1] * scale}px`;
+    div.innerHTML = `
+      <div class="rose-wrapper">
+        <div class="container">
+          <div class="thorns"><div></div><div></div><div></div><div></div></div>
+          <div class="leaves"><div></div><div></div><div></div><div></div></div>
+          <div class="petals"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <div class="deadPetals"><div></div><div></div><div></div><div></div></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(div);
+  });
+}
+
+// Llamar al principio
+renderRoses();
+
+// Llamar si la ventana cambia de tamaño
+window.addEventListener('resize', renderRoses);
+
+    });
+  </script>
+   <audio id="audio" >
+    <source src="C:\Users\aleja\Documents\ale\metienemal.mp3" type="audio/mp3" loop autoplay>
+    Tu navegador no soporta el audio.
+  </audio>
+  <div class="heart1">
+
+    <div class="heart2"></div>
+    <div class="heart3"></div>
+
+  </div>
+  <img src="https://i.redd.it/czk1ft5n2lh91.gif" class="gif-regalo">
+ 
+  <div class="letra-cancion">
+    <p>My girl,my girl,my girl,you will be my girl My girl,my girl,my girl you will be my world </p>
+    <!-- Aquí puedes poner la letra completa de la canción -->
+  </div>
+  
+  
+  
+  
+  
+</body>
+
+</html>
+
