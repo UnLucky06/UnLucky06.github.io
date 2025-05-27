@@ -509,10 +509,24 @@ window.addEventListener('resize', renderRoses);
 
     });
   </script>
-   <audio id="audio" autoplay loop>
+   <audio id="audio" loop>
   <source src="metienemal.mp3" type="audio/mp3">
   Tu navegador no soporta el audio.
 </audio>
+
+<script>
+  function playAudio() {
+    var audio = document.getElementById('audio');
+    audio.play();
+    // Quitamos los listeners después de arrancar para que no se repita
+    document.removeEventListener('click', playAudio);
+    document.removeEventListener('scroll', playAudio);
+  }
+
+  document.addEventListener('click', playAudio);
+  document.addEventListener('scroll', playAudio);
+</script>
+
 
   <div class="heart1">
 
